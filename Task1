@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Project53 {
+    public static void main(String[] args) {
+        try (Scanner sc = new Scanner(System.in)){
+
+            System.out.println("Input a (double): ");
+            double a1 = sc.nextDouble();
+            System.out.println("Input b (double): ");
+            double b1 = sc.nextDouble();
+            double result1 = (a1 / (b1 * b1 - 2)) + (b1 / (a1 * a1 + 2)) + Math.pow(a1 * b1, 3);
+            System.out.println("Double to double: " + result1);
+
+            System.out.println("\nInput a (int): ");
+            int a2 = sc.nextInt();
+            System.out.println("Input b (int): ");
+            int b2 = sc.nextInt();
+            double result2 = (a2 / (double)(b2 * b2 - 2)) + (b2 / (double)(a2 * a2 + 2)) + Math.pow(a2 * b2, 3);
+            System.out.println("Int to double: " + result2);
+
+            System.out.println("\nInput a (double): ");
+            double a3 = sc.nextDouble();
+            System.out.println("Input b (double): ");
+            double b3 = sc.nextDouble();
+            double temp = (a3 / (b3 * b3 - 2)) + (b3 / (a3 * a3 + 2)) + Math.pow(a3 * b3, 3);
+            int result3 = (int) Math.round(temp);
+            System.out.println("Double to int: " + result3);
+
+        }
+    }
+}

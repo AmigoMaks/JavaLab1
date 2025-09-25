@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+public class Project55 {
+    public static void main(String[] args) {
+        try (Scanner sc = new Scanner(System.in)){
+
+            System.out.print("Input n (n <= 20): ");
+            int n = sc.nextInt();
+
+            if (n > 20 || n <= 0) {
+                System.out.println("Wrong n value");
+                return;
+            }
+
+            int[][] M = new int[n][n];
+
+            System.out.println("Input matrix elements " + n + "x" + n + ": ");
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    M[i][j] = sc.nextInt();
+                }
+            }
+
+            int[] rowSums = new int[n];
+            for (int i = 0; i < n; i++) {
+                int sum = 0;
+                for (int j = 0; j < n; j++) {
+                    sum += M[i][j];
+                }
+                rowSums[i] = sum;
+            }
+
+            int[] colSums = new int[n];
+            for (int j = 0; j < n; j++) {
+                int sum = 0;
+                for (int i = 0; i < n; i++) {
+                    sum += M[i][j];
+                }
+                colSums[j] = sum;
+            }
+
+            boolean found = false;
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (rowSums[i] == colSums[j]) {
+                        System.out.println("Row " + (i + 1) + " and col " + (j + 1) + " have same summ = " + rowSums[i]);
+                        found = true;
+                    }
+                }
+            }
+
+            if (!found) {
+                System.out.println("No row and cols with same summs");
+            }
+        }
+    }
+}

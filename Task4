@@ -1,0 +1,41 @@
+import java.util.*;
+
+public class Project56 {
+    public static boolean isSymmetric(String word) {
+        int left = 0, right = word.length() - 1;
+        while (left < right) {
+            if (word.charAt(left) != word.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        try (Scanner sc = new Scanner(System.in)) {
+
+            System.out.println("Input text: ");
+            String text = sc.nextLine();
+
+            String[] words = text.split("[\\s\\p{Punct}]+");
+
+            System.out.println("Simmetric words:");
+            boolean found = false;
+            for (String word : words) {
+                if (!word.isEmpty()) {
+                    String lowerWord = word.toLowerCase();
+                    if (isSymmetric(lowerWord) && lowerWord.length() > 1) {
+                        System.out.println(word);
+                        found = true;
+                    }
+                }
+            }
+
+            if (!found) {
+                System.out.println("No simmetric words in text");
+            }
+        }
+    }
+}

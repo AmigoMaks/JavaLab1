@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Project54 {
+    public static void main(String[] args) {
+        try (Scanner sc = new Scanner(System.in)){
+            System.out.print("Input array size n (<=300): ");
+            int n = sc.nextInt();
+
+            int[] A = new int[n];
+            System.out.println("Input " + n + " int numbers:");
+            for (int i = 0; i < n; i++) {
+                A[i] = sc.nextInt();
+            }
+
+            int maxLen = 1;
+            int curLen = 1;
+            int maxVal = A[0];
+
+            for (int i = 1; i < n; i++) {
+                if (A[i] == A[i - 1]) { curLen++; } 
+                
+                else { curLen = 1; }
+
+                if (curLen > maxLen) {
+                    maxLen = curLen;
+                    maxVal = A[i];
+                }
+            }
+
+            System.out.println("Longest same number chain:");
+            for (int i = 0; i < maxLen; i++) {
+                System.out.print(maxVal + " ");
+            }
+        }
+    }
+}
